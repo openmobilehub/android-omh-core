@@ -11,17 +11,31 @@ Bug reports and pull requests from users are what keep this project working.
 5. Publish the branch (`git push origin my-new-feature`)
 6. Create a new Pull Request
 
-## Running for development
+## Development
 
-#### Step 1: Publish the plugin to mavenLocal
+For using the plugin for development locally, primarily three things need to be achieved compared to standard development scenario:
+
+- `repositories` need to include `mavenLocal()`
+- publishing needs to happen to maven local
+- signing needs to be disabled for publishing
+
+This project has been preconfigured with such conditional configuration that can be enabled as follows:
+
+- Via `local.properties` (applies both to Android Studio and `gradlew`): add `useMavenLocal=true`
+- Via a CLI flag: `./gradlew -PuseMavenLocal=true ...`
+
+## Publishing
+
+### Step 1: Publish the plugin to mavenLocal
 
 Go to Android Studio -> Gradle tab and run the `publishToMavenLocal`
 or you can do it by terminal
+
 ```
 ./gradlew publishToMavenLocal
 ```
 
-#### Step 2: Verify plugin is published
+### Step 2: Verify plugin is published
 
 Go to `/Users/your_user/.m2` dot folder and you'll find the plugin.
 
@@ -29,10 +43,9 @@ Go to `/Users/your_user/.m2` dot folder and you'll find the plugin.
 
 Add some prints to debug the code
 
-#### Step 3: Test it
+### Step 3: Test it
 
 Create a sample project, add the plugin and sync the project with gradle and you'll see logs in the `Build` tab in Android Studio.
-
 
 ## Checking your work
 

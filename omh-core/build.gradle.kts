@@ -1,9 +1,20 @@
+import org.jetbrains.kotlin.konan.properties.hasProperty
+import java.util.Properties
+
+var properties = Properties()
+var localPropertiesFile = project.rootProject.file("local.properties")
+if(localPropertiesFile.exists()) {
+    properties.load(localPropertiesFile.inputStream())
+}
+var useMavenLocal = (rootProject.ext.has("useMavenLocal") && rootProject.ext.get("useMavenLocal") == "true") || (properties.hasProperty("useMavenLocal") && properties.getProperty("useMavenLocal") == "true")
+
 plugins {
     `kotlin-dsl`
     `java-gradle-plugin`
     `maven-publish`
     id("io.gitlab.arturbosch.detekt")
     id("org.jetbrains.dokka") version "1.8.10"
+    id("maven-publish")
     id("signing")
 }
 
@@ -20,10 +31,18 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-repositories {
-    mavenCentral()
-    google()
-    gradlePluginPortal()
+if(useMavenLocal) {
+    repositories {
+        mavenLocal()
+        google()
+        gradlePluginPortal()
+    }
+}else{
+    repositories {
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+    }
 }
 
 dependencies {
@@ -53,28 +72,6 @@ val groupProperty = getPropertyOrFail("group")
 val versionProperty = getPropertyOrFail("version")
 val artifactId = getPropertyOrFail("id")
 val mDescription = getPropertyOrFail("pluginDescription")
-
-group = groupProperty
-version = versionProperty
-
-afterEvaluate {
-    publishing {
-        publications {
-            register("release", MavenPublication::class.java) {
-                setupPublication()
-            }
-        }
-    }
-}
-
-signing {
-    useInMemoryPgpKeys(
-        rootProject.ext["signingKeyId"].toString(),
-        rootProject.ext["signingKey"].toString(),
-        rootProject.ext["signingPassword"].toString(),
-    )
-    sign(publishing.publications)
-}
 
 fun MavenPublication.setupPublication() {
     groupId = groupProperty
@@ -110,5 +107,46 @@ fun MavenPublication.setupPublication() {
             developerConnection.set("scm:git:ssh://github.com/openmobilehub/omh-core.git")
             url.set("https://github.com/openmobilehub/omh-core")
         }
+    }
+}
+
+
+if(useMavenLocal) {
+    publishing {
+        publications {
+            register<MavenPublication>("pluginMaven") {
+                group = groupProperty
+                artifactId = artifactId
+                version = versionProperty
+
+                afterEvaluate {
+                    // from(project.components["java"])
+                    artifact(pluginSourcesJar)
+                    artifact(javadocJar)
+                }
+            }
+        }
+    }
+} else {
+    group = groupProperty
+    version = versionProperty
+
+    afterEvaluate {
+        publishing {
+            publications {
+                register("release", MavenPublication::class.java) {
+                    setupPublication()
+                }
+            }
+        }
+    }
+
+    signing {
+        useInMemoryPgpKeys(
+            rootProject.ext["signingKeyId"].toString(),
+            rootProject.ext["signingKey"].toString(),
+            rootProject.ext["signingPassword"].toString(),
+        )
+        sign(publishing.publications)
     }
 }

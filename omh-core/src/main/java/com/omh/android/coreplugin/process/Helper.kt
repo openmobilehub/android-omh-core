@@ -46,6 +46,6 @@ internal object Helper {
     ): Map<String, String?> {
         val bundles: MapProperty<String, Bundle> = omhExt.getBundles()
         val bundle: Bundle? = bundles.get()[bundleName]
-        return bundle?.getReflectionPaths() ?: emptyMap()
+        return bundle?.getReflectionPaths(omhExt.enableLocalProjects) ?: emptyMap()
     }
 }

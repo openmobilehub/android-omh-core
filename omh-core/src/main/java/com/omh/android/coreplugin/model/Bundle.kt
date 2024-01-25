@@ -70,24 +70,25 @@ open class Bundle @Inject constructor(project: Project) {
         }
     }
 
-    fun getReflectionPaths(): Map<String, String?> {
+    fun getReflectionPaths(enableLocalProjects: Boolean): Map<String, String?> {
         val pathMap = mutableMapOf<String, String?>()
         for (service in enabledServices) {
-            addPathsFromService(pathMap, service)
+            addPathsFromService(pathMap, service, enableLocalProjects)
         }
         return pathMap
     }
 
     private fun addPathsFromService(
         pathMap: MutableMap<String, String?>,
-        service: Service
+        service: Service,
+        enableLocalProjects: Boolean
     ) {
         pathMap["${service.key}_GMS_PATH"] = selectPathValue(
-            validator = service::isGmsDependencySet,
+            validator = { -> service.isGmsDependencySet || enableLocalProjects },
             getter = service::gmsPath
         )
         pathMap["${service.key}_NON_GMS_PATH"] = selectPathValue(
-            validator = service::isNonGmsDependencySet,
+            validator = { -> service.isNonGmsDependencySet || enableLocalProjects },
             getter = service::nonGmsPath
         )
     }

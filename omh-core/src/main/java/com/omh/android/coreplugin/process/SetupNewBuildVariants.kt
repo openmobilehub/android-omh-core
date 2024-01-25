@@ -53,6 +53,7 @@ internal object SetupNewBuildVariants {
             handleNewBuildType(
                 predefinedBuildType,
                 bundleData,
+                omhExtension,
                 appExtension
             )
         }
@@ -64,6 +65,7 @@ internal object SetupNewBuildVariants {
     private fun Project.handleNewBuildType(
         predefinedBuildTypeName: String,
         bundleData: BundleData,
+        omhExtension: OMHExtension,
         appExtension: ApplicationExtension
     ) {
         val finalBuildType: String = generateNewBuildTypeName(
@@ -78,6 +80,15 @@ internal object SetupNewBuildVariants {
                 appExt = appExtension
             )
             initWith(userAppBuildType)
+
+            // configure build to support other configurations in case when local projects are enabled
+            if(omhExtension.enableLocalProjects) {
+                println("[omh-core] Allowing bundle '${bundleData.name}' for fallback to"
+                    + "variant '${predefinedBuildTypeName}' for dependencies since enableLocalProjects is set to true")
+
+                matchingFallbacks.add(predefinedBuildTypeName)
+            }
+
             // then configure only the settings you want to change
             addDependencies(bundleData.dependencies, finalBuildType)
             // Add the reflection path to the BuildConfigField

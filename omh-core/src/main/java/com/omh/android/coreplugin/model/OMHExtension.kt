@@ -7,9 +7,14 @@ import javax.inject.Inject
 import org.gradle.api.Action
 import org.gradle.api.InvalidUserDataException
 import org.gradle.api.Project
+import org.gradle.api.provider.Property
 import org.gradle.api.provider.MapProperty
 
 open class OMHExtension @Inject constructor(private val project: Project) {
+    private val enableLocalProjectsProperty: Property<Boolean> = project.objects.property(Boolean::class.java)
+    var enableLocalProjects: Boolean
+        set(value) = enableLocalProjectsProperty.set(value)
+        get() = enableLocalProjectsProperty.orNull ?: false
 
     private val bundles: MapProperty<String, Bundle> = project.objects.mapProperty(
         String::class.java,
@@ -65,7 +70,7 @@ open class OMHExtension @Inject constructor(private val project: Project) {
             if (errorMsg.isEmpty() && isThereABundleWithIncorrectName(bundlesMap)) {
                 errorMsg = ERROR_BUNDLES_WITH_INCORRECT_NAME
             }
-            if (errorMsg.isEmpty() && getDependenciesFromAllBundles().isEmpty()) {
+            if (errorMsg.isEmpty() && getDependenciesFromAllBundles().isEmpty() && !enableLocalProjects) {
                 errorMsg = ERROR_BUNDLES_BUT_NO_SERVICES
             }
         }

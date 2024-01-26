@@ -1,4 +1,4 @@
-package com.omh.android.coreplugin.utils
+package com.openmobilehub.android.coreplugin.utils
 
 internal val ERROR_BUNDLES_WITHOUT_NAME = """
 There is one bundle without a name

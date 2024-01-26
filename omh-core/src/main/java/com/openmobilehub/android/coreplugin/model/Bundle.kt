@@ -1,11 +1,11 @@
-package com.omh.android.coreplugin.model
+package com.openmobilehub.android.coreplugin.model
 
-import com.omh.android.coreplugin.utils.AUTH_GMS_ADDRESS
-import com.omh.android.coreplugin.utils.AUTH_NGMS_ADDRESS
-import com.omh.android.coreplugin.utils.MAPS_GMS_ADDRESS
-import com.omh.android.coreplugin.utils.MAPS_NGMS_ADDRESS
-import com.omh.android.coreplugin.utils.STORAGE_GMS_ADDRESS
-import com.omh.android.coreplugin.utils.STORAGE_NGMS_ADDRESS
+import com.openmobilehub.android.coreplugin.utils.AUTH_GMS_ADDRESS
+import com.openmobilehub.android.coreplugin.utils.AUTH_NGMS_ADDRESS
+import com.openmobilehub.android.coreplugin.utils.MAPS_GMS_ADDRESS
+import com.openmobilehub.android.coreplugin.utils.MAPS_NGMS_ADDRESS
+import com.openmobilehub.android.coreplugin.utils.STORAGE_GMS_ADDRESS
+import com.openmobilehub.android.coreplugin.utils.STORAGE_NGMS_ADDRESS
 import org.gradle.api.Action
 import org.gradle.api.Project
 import org.gradle.api.provider.Property

@@ -1,8 +1,8 @@
-package com.omh.android.coreplugin.model
+package com.openmobilehub.android.coreplugin.model
 
-import com.omh.android.coreplugin.utils.ERROR_BUNDLES_BUT_NO_SERVICES
-import com.omh.android.coreplugin.utils.ERROR_BUNDLES_WITHOUT_NAME
-import com.omh.android.coreplugin.utils.ERROR_BUNDLES_WITH_INCORRECT_NAME
+import com.openmobilehub.android.coreplugin.utils.ERROR_BUNDLES_BUT_NO_SERVICES
+import com.openmobilehub.android.coreplugin.utils.ERROR_BUNDLES_WITHOUT_NAME
+import com.openmobilehub.android.coreplugin.utils.ERROR_BUNDLES_WITH_INCORRECT_NAME
 import javax.inject.Inject
 import org.gradle.api.Action
 import org.gradle.api.InvalidUserDataException

@@ -22,7 +22,7 @@ gradlePlugin {
     plugins {
         create("pluginRelease") {
             id = getPropertyOrFail("id")
-            implementationClass = "com.omh.android.coreplugin.OMHCorePlugin"
+            implementationClass = "com.openmobilehub.android.coreplugin.OMHCorePlugin"
         }
     }
 }

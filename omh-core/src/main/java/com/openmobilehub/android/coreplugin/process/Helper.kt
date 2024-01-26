@@ -1,9 +1,9 @@
-package com.omh.android.coreplugin.process
+package com.openmobilehub.android.coreplugin.process
 
 import com.android.build.api.dsl.ApplicationBuildType
 import com.android.build.api.dsl.ApplicationExtension
-import com.omh.android.coreplugin.model.Bundle
-import com.omh.android.coreplugin.model.OMHExtension
+import com.openmobilehub.android.coreplugin.model.Bundle
+import com.openmobilehub.android.coreplugin.model.OMHExtension
 import org.gradle.api.provider.MapProperty
 import org.gradle.configurationcache.extensions.capitalized
 

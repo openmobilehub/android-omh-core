@@ -1,8 +1,8 @@
-package com.omh.android.coreplugin
+package com.openmobilehub.android.coreplugin
 
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension
-import com.omh.android.coreplugin.utils.setupBuildVariantsAccordingToConfig
-import com.omh.android.coreplugin.utils.setupExtension
+import com.openmobilehub.android.coreplugin.utils.setupBuildVariantsAccordingToConfig
+import com.openmobilehub.android.coreplugin.utils.setupExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 

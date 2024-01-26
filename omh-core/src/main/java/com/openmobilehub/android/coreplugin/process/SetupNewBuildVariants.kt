@@ -1,15 +1,15 @@
-package com.omh.android.coreplugin.process
+package com.openmobilehub.android.coreplugin.process
 
 import com.android.build.api.dsl.ApplicationBuildType
 import com.android.build.api.dsl.ApplicationExtension
-import com.omh.android.coreplugin.model.OMHExtension
-import com.omh.android.coreplugin.process.Helper.generateNewBuildTypeName
-import com.omh.android.coreplugin.process.Helper.getBundleDependencies
-import com.omh.android.coreplugin.process.Helper.getBundleReflectionPaths
-import com.omh.android.coreplugin.process.Helper.getBundlesNames
-import com.omh.android.coreplugin.process.Helper.getUserAppBuildType
-import com.omh.android.coreplugin.utils.BundleData
-import com.omh.android.coreplugin.utils.addDependencyToBuildType
+import com.openmobilehub.android.coreplugin.model.OMHExtension
+import com.openmobilehub.android.coreplugin.process.Helper.generateNewBuildTypeName
+import com.openmobilehub.android.coreplugin.process.Helper.getBundleDependencies
+import com.openmobilehub.android.coreplugin.process.Helper.getBundleReflectionPaths
+import com.openmobilehub.android.coreplugin.process.Helper.getBundlesNames
+import com.openmobilehub.android.coreplugin.process.Helper.getUserAppBuildType
+import com.openmobilehub.android.coreplugin.utils.BundleData
+import com.openmobilehub.android.coreplugin.utils.addDependencyToBuildType
 import org.gradle.api.Project
 
 /**

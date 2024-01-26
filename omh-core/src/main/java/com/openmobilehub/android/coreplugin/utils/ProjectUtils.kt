@@ -1,10 +1,10 @@
-package com.omh.android.coreplugin.utils
+package com.openmobilehub.android.coreplugin.utils
 
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension
-import com.omh.android.coreplugin.model.OMHExtension
-import com.omh.android.coreplugin.process.Helper
-import com.omh.android.coreplugin.process.Helper.getUserBuildTypesNames
-import com.omh.android.coreplugin.process.SetupNewBuildVariants.execute
+import com.openmobilehub.android.coreplugin.model.OMHExtension
+import com.openmobilehub.android.coreplugin.process.Helper
+import com.openmobilehub.android.coreplugin.process.Helper.getUserBuildTypesNames
+import com.openmobilehub.android.coreplugin.process.SetupNewBuildVariants.execute
 import org.gradle.api.Project
 
 private const val OMH_PLUGIN_EXTENSION = "omhConfig"

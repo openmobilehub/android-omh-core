@@ -1,4 +1,4 @@
-package com.omh.android.coreplugin.utils
+package com.openmobilehub.android.coreplugin.utils
 
 class BundleData(
     val name: String,

@@ -1,4 +1,4 @@
-package com.omh.android.coreplugin.model
+package com.openmobilehub.android.coreplugin.model
 
 import javax.inject.Inject
 import org.gradle.api.Project

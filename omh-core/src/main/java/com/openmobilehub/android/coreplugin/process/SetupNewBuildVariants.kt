@@ -84,7 +84,7 @@ internal object SetupNewBuildVariants {
             // configure build to support other configurations in case when local projects are enabled
             if(omhExtension.enableLocalProjects) {
                 println("[omh-core] Allowing bundle '${bundleData.name}' for fallback to"
-                    + "variant '${predefinedBuildTypeName}' for dependencies since enableLocalProjects is set to true")
+                    + " variant '${predefinedBuildTypeName}' for dependencies since enableLocalProjects is set to true")
 
                 matchingFallbacks.add(predefinedBuildTypeName)
             }

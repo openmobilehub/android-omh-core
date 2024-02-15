@@ -84,11 +84,11 @@ open class Bundle @Inject constructor(project: Project) {
         enableLocalProjects: Boolean
     ) {
         pathMap["${service.key}_GMS_PATH"] = selectPathValue(
-            validator = { -> service.isGmsDependencySet || enableLocalProjects },
+            validator = { -> service.isGmsDependencySet || (service.isGmsDetailSet && enableLocalProjects) },
             getter = service::gmsPath
         )
         pathMap["${service.key}_NON_GMS_PATH"] = selectPathValue(
-            validator = { -> service.isNonGmsDependencySet || enableLocalProjects },
+            validator = { -> service.isNonGmsDependencySet || (service.isNonGmsDetailSet && enableLocalProjects) },
             getter = service::nonGmsPath
         )
     }

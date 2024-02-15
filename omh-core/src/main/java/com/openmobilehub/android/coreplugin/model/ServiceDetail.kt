@@ -14,13 +14,14 @@ open class ServiceDetail @Inject constructor(
 ) {
     private val dependencyProperty: Property<String> = project.objects.property(String::class.java)
     private val pathProperty: Property<String> = project.objects.property(String::class.java)
+    private val isSetProperty: Property<Boolean> = project.objects.property(Boolean::class.java)
 
     internal val isDependencySet: Boolean
         get() {
             val value: String? = dependencyProperty.orNull
             return !value.isNullOrBlank() || !value.isNullOrEmpty()
         }
-
+    
     /**
      *  This is the library in itself.
      *  For example:
@@ -31,6 +32,9 @@ open class ServiceDetail @Inject constructor(
     var path: String
         set(value) = pathProperty.set(value)
         get() = dependencyProperty.orNull ?: defaultPath
+    var isSet: Boolean
+        set(value) = isSetProperty.set(value)
+        get() = isSetProperty.orNull ?: false
 
     internal fun getDependency(): String = dependencyProperty.get()
     internal fun getPath(): String = pathProperty.getOrElse(defaultPath)

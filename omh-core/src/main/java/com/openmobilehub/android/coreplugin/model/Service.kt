@@ -28,12 +28,19 @@ open class Service @Inject constructor(
     internal val isNonGmsDependencySet: Boolean
         get() = ngmsServiceDetail.isDependencySet
 
+    internal val isGmsDetailSet: Boolean
+        get() = gmsServiceDetail.isSet
+    internal val isNonGmsDetailSet: Boolean
+        get() = ngmsServiceDetail.isSet
+
     fun gmsService(configuration: Action<in ServiceDetail>) {
         configuration.execute(gmsServiceDetail)
+        gmsServiceDetail.isSet = true
     }
 
     fun nonGmsService(configuration: Action<in ServiceDetail>) {
         configuration.execute(ngmsServiceDetail)
+        ngmsServiceDetail.isSet = true
     }
 
     internal val gmsService

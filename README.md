@@ -8,10 +8,7 @@
 
 [![Android CI](https://github.com/openmobilehub/omh-core/actions/workflows/android_pr.yml/badge.svg)](https://github.com/openmobilehub/omh-core/actions/workflows/android_pr.yml)
 
-# OMH (Open Mobile Hub) - Core 1.0
-
-> **Note:** This repository will be deprecated in August 2024. Developers should use the following repository:
-> - [OMH 2.0 Core Android Native repo](https://github.com/openmobilehub/android-omh-core)
+# OMH (Open Mobile Hub) - Core Android Plugin
 
 ## Overview
 
